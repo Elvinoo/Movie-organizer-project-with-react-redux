@@ -1,6 +1,5 @@
-# Module 4 project – Movie organizer.
+React project – Movie organizer with the class components and redux
 
-Starter for Module 4 project in Algoritmika Coding Bootcamp
 
 ## How to run
 
