@@ -22,7 +22,7 @@ class MovieItem extends Component {
                 <img className="movie-item__poster" src={Poster} alt={Title} />
                 <div className="movie-item__info">
                     <h3 className="movie-item__title">{Title}&nbsp;({Year})</h3>
-                    <button onClick={() => this.addToCard(imdbID)} type="button" className="movie-item__add-button">Добавить в список</button>
+                    <button onClick={() => this.addToCard(imdbID)} type="button" className="movie-item__add-button">Add to list</button>
                 </div>
             </article>
         );

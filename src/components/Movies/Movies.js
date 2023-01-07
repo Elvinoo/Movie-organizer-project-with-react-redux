@@ -14,6 +14,9 @@ class Movies extends Component {
         })
     }
     render() {
+        if (!this.state.movies) {
+            return null;
+        }
         return (
             <ul className="movies">
                 {this.state.movies.map((movie) => (

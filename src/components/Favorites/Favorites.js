@@ -8,7 +8,8 @@ class Favorites extends Component {
         movies: [],
         value: "",
         newEntry: 0,
-        disabled: false
+        disabled: false,
+        id: ""
     }
     handleValue = (e) => {
         this.setState({ value: e.target.value })
@@ -23,7 +24,20 @@ class Favorites extends Component {
     }
     handleClick = (e) => {
         this.setState({ disabled: true });
-        e.target.style.display = "none"
+        e.target.style.display = "none";
+        const data = {
+            "title": this.state.value,
+            "movies": this.state.movies
+        };
+        fetch(`https://acb-api.algoritmika.org/api/movies/list `, {
+            method: "POST",
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(res => res.json())
+            .then((res) => this.setState({ id: res.id }))
+
     }
     componentDidMount() {
         store.subscribe(() => {
@@ -48,7 +62,8 @@ class Favorites extends Component {
                     )}
 
                 </ul>
-                {!this.state.disabled ? (<button type="button" onClick={this.handleClick} disabled={this.state.value === "" || this.state.newEntry <= 0} className="favorites__save">Сохранить список</button>) : (<Link to="/list/:id" >Pereyti k spisku</Link>)}
+                {!this.state.disabled ? (<button type="button" onClick={this.handleClick} disabled={this.state.value === "" || this.state.newEntry <= 0} className="favorites__save" >Save List</button>) : (<Link to={"/list/" + this.state.id} >Go to the list</Link>)
+                }
             </div>
         );
     }
