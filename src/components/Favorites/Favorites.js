@@ -50,7 +50,7 @@ class Favorites extends Component {
     render() {
         return (
             <div className="favorites">
-                <input disabled={this.state.disabled} onChange={this.handleValue} value={this.state.value} placeholder="Введите название списка" className="favorites__name" />
+                <input disabled={this.state.disabled} onChange={this.handleValue} value={this.state.value} placeholder="Enter a name for the list" className="favorites__name" />
                 <ul className="favorites__list">
                     {this.state.movies.map((item) =>
 
